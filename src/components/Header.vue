@@ -1,8 +1,8 @@
 <template>
     <div class="headerContainer">
-        <li><a href="">Home</a></li>
-        <li><a href="">Add Resturant</a></li>
-        <li><a href="">Update Resturant</a></li>
+        <li><router-link to="/">Home</router-link></li>
+        <li><router-link to="/add-resturant">Add Resturant</router-link></li>
+        <li><router-link to="/update-resturant">Update Resturant</router-link></li>
         <li><a v-on:click="Logout" href="#">Logout</a></li>
     </div>
 </template>
@@ -31,6 +31,7 @@ export default{
 .headerContainer li{
     list-style: none;
     padding: 10px 20px;
+    transition: 0.3s;
 }
 .headerContainer li a{
     text-decoration: none;
