@@ -71,7 +71,10 @@ export default {
             // We can also then and catch follwing the axios instead of async await
             console.log(result)
             if (result.status == 201) {
-                alert("Signup successfully done.")
+               // alert("Signup successfully done.")
+                //save user info into his localstorage
+                localStorage.setItem("user-info", JSON.stringify(result.data))
+                this.$router.push({name: "HomeVue"})
             }
         }
     }
