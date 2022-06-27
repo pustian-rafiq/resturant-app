@@ -8,31 +8,32 @@
                         Signup Form
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form @submit.prevent="signUp">
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                                    <input type="text" v-model="name" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter your name">
                                 </div>
                                 <div class="col-sm-12 col-md-12 mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter your email">
+                                    <input type="email" v-model="email" class="form-control"
+                                        id="exampleFormControlInput1" placeholder="Enter your email">
                                 </div>
                                 <div class="col-sm-12 col-md-12 mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Password</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter your password">
+                                    <input type="password" v-model="password" class="form-control"
+                                        id="exampleFormControlInput1" placeholder="Enter your password">
                                 </div>
-                                <div class="col-sm-12 col-md-12 mb-3">
+                                <!-- <div class="col-sm-12 col-md-12 mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
                                     <input type="email" class="form-control" id="exampleFormControlInput1"
                                         placeholder="Enter your confirm password">
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-12 mb-3">
-                                    <button class="btn btn-success">Signup</button>
+                                    <button type="submit" class="btn btn-success">Signup</button>
+                                    <!-- <button v-on="signUp" class="btn btn-success">Signup</button> -->
                                 </div>
                             </div>
                         </form>
@@ -43,15 +44,37 @@
 
         </div>
     </div>
- 
+
 
 
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
-    name: "SignUp"
+    name: "SignUp",
+
+    data: function () {
+        return {
+            name: '',
+            email: '',
+            password: ''
+        }
+    },
+    methods: {
+        async signUp() {
+            let result = await axios.post("http://localhost:3000/users", {
+                name: this.name,
+                email: this.email,
+                password: this.password
+            })
+            // We can also then and catch follwing the axios instead of async await
+            console.log(result)
+            if (result.status == 201) {
+                alert("Signup successfully done.")
+            }
+        }
+    }
 }
 
 </script>

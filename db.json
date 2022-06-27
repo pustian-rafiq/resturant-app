@@ -1,5 +1,5 @@
 {
-  "user": [
+  "users": [
     {
       "name": "Rafiqul",
       "email": "rafiq@gmail.com",
@@ -11,6 +11,12 @@
       "email": "rakib@gmail.com",
       "password": "123456",
       "id": 2
+    },
+    {
+      "name": "Ruhan Khan",
+      "email": "ruhan@gmail.com",
+      "password": "123456",
+      "id": 3
     }
   ]
 }
