@@ -5,16 +5,12 @@
             <div class="col-sm-12 col-md-6 offset-md-3">
                 <div class="card" style=" margin: auto;">
                     <div class="card-header bg-dark text-light text-center">
-                        Signup Form
+                        Login Form
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="signUp">
+                        <form @submit.prevent="login">
                             <div class="row">
-                                <div class="col-sm-12 col-md-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                    <input type="text" v-model="name" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter your name">
-                                </div>
+                                 
                                 <div class="col-sm-12 col-md-12 mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email</label>
                                     <input type="email" v-model="email" class="form-control"
@@ -25,16 +21,12 @@
                                     <input type="password" v-model="password" class="form-control"
                                         id="exampleFormControlInput1" placeholder="Enter your password">
                                 </div>
-                                <!-- <div class="col-sm-12 col-md-12 mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Enter your confirm password">
-                                </div> -->
+                                
 
-                                <div class="col-md-12 mb-3 d-flex"> 
-                                    <button type="submit" class="btn btn-success">Signup</button>
-                                    <p style="padding-left: 10px;">Already have you an account?
-                                        <router-link to="/login">Login</router-link>
+                                 <div class="col-md-12 mb-3 d-flex"> 
+                                    <button type="submit" class="btn btn-success">Login</button>
+                                    <p style="padding-left: 10px;">Do you have any account?
+                                        <router-link to="/sign-up">Signup</router-link>
                                     </p>
 
                                     <!-- <button v-on="signUp" class="btn btn-success">Signup</button> -->
@@ -75,18 +67,18 @@ export default {
             // We can also then and catch follwing the axios instead of async await
             console.log(result)
             if (result.status == 201) {
-                // alert("Signup successfully done.")
+               // alert("Signup successfully done.")
                 //save user info into his localstorage
                 localStorage.setItem("user-info", JSON.stringify(result.data))
-                this.$router.push({ name: "HomeVue" })
+                this.$router.push({name: "HomeVue"})
             }
         }
     },
-    mounted() {
+    mounted(){
         const user = localStorage.getItem("user-info")
 
-        if (user) {
-            this.$router.push({ name: "HomeVue" })
+        if(user){
+            this.$router.push({name: "HomeVue"})
         }
     }
 }
