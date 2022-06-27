@@ -48,28 +48,23 @@
 <script>
 import axios from 'axios'
 export default {
-    name: "SignUp",
+    name: "Login",
 
     data: function () {
         return {
-            name: '',
             email: '',
             password: ''
         }
     },
     methods: {
-        async signUp() {
-            let result = await axios.post("http://localhost:3000/users", {
-                name: this.name,
-                email: this.email,
-                password: this.password
-            })
+        async login() {
+            let user = await axios.get(`http://localhost:3000/users?email=${this.email}&password=${this.password}`)
+
             // We can also then and catch follwing the axios instead of async await
-            console.log(result)
-            if (result.status == 201) {
-               // alert("Signup successfully done.")
+            console.log(user)
+            if (user.status == 200 && user.data.length > 0) {
                 //save user info into his localstorage
-                localStorage.setItem("user-info", JSON.stringify(result.data))
+                localStorage.setItem("user-info", JSON.stringify(user.data))
                 this.$router.push({name: "HomeVue"})
             }
         }
