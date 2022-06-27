@@ -77,6 +77,13 @@ export default {
                 this.$router.push({name: "HomeVue"})
             }
         }
+    },
+    mounted(){
+        const user = localStorage.getItem("user-info")
+
+        if(user){
+            this.$router.push({name: "HomeVue"})
+        }
     }
 }
 

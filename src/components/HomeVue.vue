@@ -9,7 +9,13 @@
 export default {
     
     name: "HomeVue",
-    /* eslint-disable */
+  mounted(){
+        const user = localStorage.getItem("user-info")
+
+        if(!user){
+            this.$router.push({name: "SignUp"})
+        }
+    }
 }
 </script>
 
