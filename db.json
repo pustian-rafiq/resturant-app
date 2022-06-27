@@ -30,5 +30,19 @@
       "password": "123",
       "id": 5
     }
+  ],
+  "resturant":[
+    {
+      "id": 1,
+      "name": "SundarbanShop",
+      "contract":"01991166550",
+      "address": "Nalta Kaliganj"
+    },
+    {
+      "id": 2,
+      "name": "Ranna Ghor",
+      "contract":"01991166550",
+      "address": "Nalta Mobarok Nagor"
+    }
   ]
 }
